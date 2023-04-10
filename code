@@ -2,25 +2,18 @@
 
 const int IR_pin = A0;
 const int green_led_pin = 2;
-const int red_led_pin = 3;
 
 void setup() {
+  pinMode(IR_pin, INPUT);
   pinMode(green_led_pin, OUTPUT);
-  pinMode(red_led_pin, OUTPUT);
-  Serial.begin(9600);
 }
 
 void loop() {
-  int distance = analogRead(IR_pin) * 5 / 1024;
-  Serial.print("Distance: ");
-  Serial.print(distance);
-  Serial.println(" cm");
-  if (distance <= 20) {
-    digitalWrite(green_led_pin, HIGH);
-    digitalWrite(red_led_pin, LOW);
+  int distance = 12 * pow(analogRead(IR_pin) / 1024.0, -1); 
+  if (distance <= 20) { 
+    digitalWrite(green_led_pin, HIGH); 
   } else {
-    digitalWrite(green_led_pin, LOW);
-    digitalWrite(red_led_pin, HIGH);
+    digitalWrite(green_led_pin, LOW); 
   }
-  delay(500);
+  delay(100); 
 }
