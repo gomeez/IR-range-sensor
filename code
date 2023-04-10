@@ -1,6 +1,6 @@
 #include <Arduino.h>
 
-const int IR_pin = A0;
+const int IR_pin = 12;
 const int green_led_pin = 2;
 
 void setup() {
